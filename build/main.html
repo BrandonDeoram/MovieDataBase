@@ -64,7 +64,8 @@
           document.querySelector("#genre").value = data.Genre;
           document.querySelector("#runtime").value = data.Runtime;
           document.querySelector("#director").value = data.Director;
-          document.querySelector("#writer").value = data.Writer;
+          document.querySelector("#actors").value = data.Actors;
+          document.querySelector("#plot").value = data.Plot;
           var ratingDiv = document.getElementById("rating");
           var r = '<img src="../images/trophy.png" alt="" />';
           for (var i = 0; i < data.imdbRating; i++) {
