@@ -7,6 +7,43 @@
     <link rel="stylesheet" href="css/style.css" />
     <title>Document</title>
     <script>
+      function handleClick(event) {
+        event.preventDefault();
+        console.log("hello");
+        fetch("http://localhost:5000/films")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            var films = document.getElementById("films");
+
+            const htmlStrings = data.map((element) => {
+              let timeHTML = `<div class="flex-col mr-10">`;
+              for (let i = 0; i < element.times.length; i++) {
+                timeHTML += `<p>${element.times[i]}</p>`;
+              }
+              timeHTML += `</div>`;
+              return `
+          <div class="flex  w-full p-4">
+            <label for="title" class="block text-gray-700 font-medium mb-2 ml-3 mr-14" style="min-width:180px">${element.title}:</label>
+            <div class="flex-col mr-10">
+            </div>
+            ${timeHTML}
+          </div>
+          <hr style="border-top: 1px solid grey; width: 360px" />
+        `;
+            });
+
+            const newContent = htmlStrings.join("");
+
+            films.innerHTML += newContent;
+
+            console.log(data);
+          });
+      }
       let imbd;
       // fetch data from server called /movie
       fetch("http://localhost:5000/movie")
@@ -47,12 +84,50 @@
       <h2 class="text-3xl text-white mx-52">Showtimes</h2>
       <p class="text-sm text-white mx-52">Give me something to do !</p>
     </div>
-    <div class="grid grid-cols-2 gap-4 p-16">
-      <div class="bg-gray-200">h</div>
-      <div class="bg-gray-300">
+    <div class="grid grid-cols-2 gap-4 p-10">
+      <div class="bg-white">
+        <form class="flex flex-col p-16" id="form">
+          <div class="flex mb-6">
+            <label for="dropdown" class="block font-bold text-gray-700"
+              >Location:
+            </label>
+            <select
+              id="dropdown"
+              name="dropdown"
+              class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2 ml-2"
+            >
+              <option value="Oshawa Cinemas">Oshawa Cinemas</option>
+            </select>
+          </div>
+          <div class="flex mb-6">
+            <label for="datepicker" class="block font-bold text-gray-700"
+              >Date</label
+            >
+            <input
+              value="2021-01-01"
+              type="date"
+              id="datepicker"
+              name="datepicker"
+              class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-2 ml-10"
+            />
+          </div>
+
+          <button
+            type="submit"
+            onclick="handleClick(event)"
+            class="bg-custom text-white font-bold py-2 px-4 rounded w-fit ml-20"
+          >
+            Submit
+          </button>
+        </form>
+        <div id="films" class="ml-20">
+          
+        </div>
+      </div>
+      <div class="bg-white">
         <img alt="Poster" class="w-40 mx-auto" />
 
-        <div class="bg-gray-200 py-8">
+        <div class="bg-white py-8">
           <form class="mx-auto max-w-lg">
             <div class="flex mb-6">
               <label
