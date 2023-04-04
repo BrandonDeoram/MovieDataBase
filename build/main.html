@@ -21,6 +21,19 @@
           console.log(data);
           console.log("IMBD" + JSON.stringify(imbd)); // Move this statement inside the "then" block
           const img = document.querySelector("img"); // Get the img element
+          // get title class name input field and populate with data
+          document.querySelector("#title").value = data.Title;
+          document.querySelector("#year").value = data.Year;
+          document.querySelector("#genre").value = data.Genre;
+          document.querySelector("#runtime").value = data.Runtime;
+          document.querySelector("#director").value = data.Director;
+          document.querySelector("#writer").value = data.Writer;
+          var ratingDiv = document.getElementById("rating");
+          var r = '<img src="../images/trophy.png" alt="" />';
+          for (var i = 0; i < data.imdbRating; i++) {
+            ratingDiv.innerHTML += r;
+          }
+
           img.src = data.Poster; // Set the src attribute to the poster URL
           img.alt = data.title; // Set the alt attribute to the movie title
         })
@@ -44,7 +57,8 @@
             <div class="flex mb-6">
               <label
                 for="title"
-                class="block text-gray-700 font-bold mb-2 ml-3 mr-14 w-16"
+                class="block text-gray-700 font-bold mb-2 ml-3 mr-14"
+                style="min-width: 60px"
                 >Title:</label
               >
               <input
@@ -56,16 +70,110 @@
             </div>
             <div class="flex mb-6">
               <label
-                for="description"
-                class="block text-gray-700 font-bold mb-2 ml-3 mr-10 w-16"
-                >Description:</label
+                for="year"
+                class="block text-gray-700 font-bold mb-2 ml-3 mr-14"
+                style="min-width: 60px"
+                >Year:</label
               >
               <input
                 type="text"
-                name="description"
-                id="description"
+                name="year"
+                id="year"
                 class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full mr-3"
               />
+            </div>
+            <div class="flex mb-6">
+              <label
+                for="genre"
+                class="block text-gray-700 font-bold mb-2 ml-3 mr-14"
+                style="min-width: 60px"
+                >Genre:</label
+              >
+              <input
+                type="text"
+                name="genre"
+                id="genre"
+                class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full mr-3"
+              />
+            </div>
+            <div class="flex mb-6">
+              <label
+                for="rutnime"
+                class="block text-gray-700 font-bold mb-2 ml-3 mr-14"
+                style="min-width: 60px"
+                >Runtime:</label
+              >
+              <input
+                type="text"
+                name="runtime"
+                id="runtime"
+                class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full mr-3"
+              />
+            </div>
+            <div class="flex mb-6">
+              <label
+                for="director"
+                class="block text-gray-700 font-bold mb-2 ml-3 mr-14"
+                style="min-width: 60px"
+                >Director:</label
+              >
+              <input
+                type="text"
+                name="director"
+                id="director"
+                class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full mr-3"
+              />
+            </div>
+            <div class="flex mb-6">
+              <label
+                for="writer"
+                class="block text-gray-700 font-bold mb-2 ml-3 mr-14"
+                style="min-width: 60px"
+                >Writer:</label
+              >
+              <input
+                type="text"
+                name="writer"
+                id="writer"
+                class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full mr-3"
+              />
+            </div>
+            <div class="flex mb-6">
+              <label
+                for="actors"
+                class="block text-gray-700 font-bold mb-2 ml-3 mr-14"
+                style="min-width: 60px; min-height: 60px"
+                >Actors:</label
+              >
+              <input
+                type="text"
+                name="actors"
+                id="actors"
+                class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full mr-3"
+              />
+            </div>
+            <div class="flex mb-6">
+              <label
+                for="plot"
+                class="block text-gray-700 font-bold mb-2 ml-3 mr-14"
+                style="min-width: 60px; min-height: 80px"
+                >Plot:</label
+              >
+              <input
+                type="text"
+                name="plot"
+                id="plot"
+                class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full mr-3"
+              />
+            </div>
+            <div class="flex mb-6">
+              <label
+                for="rating"
+                class="block text-gray-700 font-bold mb-2 ml-3 mr-14"
+                style="min-width: 60px"
+                >Rating:</label
+              >
+              <div id="rating" class="flex flex-row"></div>
             </div>
           </form>
         </div>

@@ -516,6 +516,10 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.row-auto {
+  grid-row: auto;
+}
+
 .mx-52 {
   margin-left: 13rem;
   margin-right: 13rem;
@@ -673,6 +677,14 @@ video {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.grid-rows-6 {
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
 .flex-wrap {
   flex-wrap: wrap;
 }
@@ -737,6 +749,14 @@ video {
 
 .pr-2 {
   padding-right: 0.5rem;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .text-3xl {
