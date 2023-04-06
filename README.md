@@ -1,6 +1,6 @@
 # Movie Database
 
-Pulls data from IMBD and then displays it offering basic CRUD operations 
+Pulls data from IMBD and then displays it offering basic CRUD (Create)operations 
 
 ## Technologies
 - HTML/CSS
